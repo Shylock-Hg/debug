@@ -1,5 +1,3 @@
-use proc_macro2;
-use quote;
 use syn::{self, punctuated::Punctuated};
 
 pub fn debug_field_impl(ast: &mut syn::DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
@@ -10,7 +8,7 @@ pub fn debug_field_impl(ast: &mut syn::DeriveInput) -> syn::Result<proc_macro2::
                 fields: new_fields,
                 ..data.clone()
             });
-            return Ok(quote::quote! { #ast });
+            Ok(quote::quote! { #ast })
         }
         syn::Data::Enum(ref data) => {
             let new_variants = filter_variants(&data.variants);
@@ -18,7 +16,7 @@ pub fn debug_field_impl(ast: &mut syn::DeriveInput) -> syn::Result<proc_macro2::
                 variants: new_variants,
                 ..data.clone()
             });
-            return Ok(quote::quote! { #ast });
+            Ok(quote::quote! { #ast })
         }
         syn::Data::Union(ref data) => {
             let new_fileds = filter_punt_fields(&data.fields.named);
@@ -30,7 +28,7 @@ pub fn debug_field_impl(ast: &mut syn::DeriveInput) -> syn::Result<proc_macro2::
                 fields: named_fields,
                 ..data.clone()
             });
-            return Ok(quote::quote! { #ast });
+            Ok(quote::quote! { #ast })
         }
     }
 }
@@ -83,11 +81,7 @@ fn remove_debug_attr_helper(field: &syn::Field) -> syn::Field {
 fn filter_field(field: &syn::Field) -> bool {
     for attr in &field.attrs {
         if attr.path().is_ident("debug") {
-            if cfg!(debug_assertions) {
-                return true;
-            } else {
-                return false;
-            }
+            return cfg!(debug_assertions);
         }
     }
     true
@@ -121,11 +115,7 @@ fn remove_debug_attr_helper_of_variant(variant: &syn::Variant) -> syn::Variant {
 fn filter_variant(variant: &syn::Variant) -> bool {
     for attr in &variant.attrs {
         if attr.path().is_ident("debug") {
-            if cfg!(debug_assertions) {
-                return true;
-            } else {
-                return false;
-            }
+            return cfg!(debug_assertions);
         }
     }
     true

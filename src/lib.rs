@@ -6,7 +6,7 @@ pub fn debug(item: TokenStream) -> TokenStream {
     if cfg!(debug_assertions) {
         item
     } else {
-        return Default::default();
+        Default::default()
     }
 }
 
