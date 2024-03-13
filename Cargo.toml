@@ -2,6 +2,10 @@
 name = "debug"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
+description = "The util to remove code when not debug build."
+readme = "README.md"
+repository = "https://github.com/shylock-hg/debug"
 
 [lib]
 proc_macro = true
