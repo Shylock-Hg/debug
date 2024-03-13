@@ -6,7 +6,7 @@ license = "Apache-2.0"
 description = "The util to remove code when not debug build."
 readme = "README.md"
 repository = "https://github.com/shylock-hg/debug"
-keywords = ["proc_macro", "conditional", "compilation", "debug code"]
+keywords = ["proc_macro", "conditional", "compilation", "debug_code"]
 
 [lib]
 proc_macro = true
