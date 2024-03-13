@@ -1,4 +1,4 @@
-use debug::debug;
+use debug_code::debug;
 
 debug! {
     fn add(x: i32, y: i32) -> i32 {

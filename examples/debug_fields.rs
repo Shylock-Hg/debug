@@ -1,4 +1,4 @@
-use debug::debug_field;
+use debug_code::debug_field;
 
 debug_field! {
     struct Test {
