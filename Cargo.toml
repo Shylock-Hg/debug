@@ -1,0 +1,29 @@
+[package]
+name = "debug"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc_macro = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+syn = "2.0.52"
+proc-macro2 = "1.0.79"
+quote = "1.0.35"
+
+[[example]]
+name = "debug_fn"
+
+[[example]]
+name = "debug_data"
+
+[[example]]
+name = "debug_stmt"
+
+[[example]]
+name = "debug_fields"
+
+[[example]]
+name = "debug_variants"
